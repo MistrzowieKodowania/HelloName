@@ -1,24 +1,23 @@
-import greenfoot.*;
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import javax.swing.JOptionPane;
 import java.awt.Color;
 
 public class Ludek extends Actor
 {
-    //private String odpowiedz = "";
-     
-    
-    public void act() {
-        String odpowiedz = "nieznajomy";
-        String powitanie = "Cześć ";
-        
-        if(Greenfoot.mousePressed(this)){
-            do {                            
-                 odpowiedz = JOptionPane.showInputDialog(null,"Jak masz na imię?","Mam pytanie", JOptionPane.PLAIN_MESSAGE);  
-            } while (odpowiedz.isEmpty());
-        
-            powitanie = powitanie + odpowiedz;
-            setImage(new GreenfootImage(powitanie, 24, Color.RED, Color.BLACK));
-            Greenfoot.stop();
-        }
-    }    
+    String imie;
+    public void act() 
+    {
+        try{
+       do{
+        imie = JOptionPane.showInputDialog("Jak masz na imię?");
+        }while(imie.isEmpty()); 
+        setImage(new GreenfootImage("Cześć " + imie, 24, Color.RED, null));
+        Greenfoot.stop();
+       }    
+       catch(Exception e)
+       {
+           imie = "";
+           JOptionPane.showMessageDialog(null,"Wprowadź dane!");
+       }
+}
 }
